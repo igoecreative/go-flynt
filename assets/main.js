@@ -22,3 +22,19 @@ window.customElements.define(
   'flynt-component',
   FlyntComponent
 )
+
+import { registerIconLibrary } from '@shoelace-style/shoelace/dist/utilities/icon-library.js';
+
+registerIconLibrary('lucide', {
+  resolver: name => `https://cdn.jsdelivr.net/npm/lucide-static@0.16.29/icons/${name}.svg`
+});
+
+registerIconLibrary('my-icons', {
+  resolver: name => `/wp-content/themes/theme/assets/icons/${name}.svg`,
+  mutator: svg => svg.setAttribute('fill', 'currentColor')
+});
+
+window.customElements.define(
+  'flynt-component',
+  FlyntComponent
+)

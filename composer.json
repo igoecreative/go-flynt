@@ -18,7 +18,8 @@
     "timber/timber": "^2.0"
   },
   "require-dev": {
-    "squizlabs/php_codesniffer": "^3.8"
+    "squizlabs/php_codesniffer": "^3.8",
+    "php-stubs/wordpress-stubs": "^6.4"
   },
   "extra": {
     "installer-paths": {

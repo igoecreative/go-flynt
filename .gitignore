@@ -31,6 +31,9 @@ composer.phar
 # .nfs files are created when an open file is removed but is still being accessed
 .nfs*
 
+# .zip files are created for bundling the theme
+*.zip
+
 ### Node ###
 # Logs
 logs
