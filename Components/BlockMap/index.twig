@@ -1,0 +1,8 @@
+<flynt-component name="BlockMap" class="componentSpacing" {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}>
+  <script type="application/json">{{ jsonData|json_encode }}</script>
+  <div class="container">
+    <div class="content" data-size="{{ options.size }}" data-align="{{ options.align }}" data-text-align="{{ options.textAlign }}">
+      <div data-ref="map" class="map" id="map"></div>
+    </div>
+  </div>
+</flynt-component>
