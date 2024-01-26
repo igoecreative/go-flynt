@@ -4,5 +4,11 @@
   'styles/fonts',
   'styles/base';
 
+// WooCommerce overrides
+@import
+  'styles/woo/result-count.scss',
+  'styles/woo/notices-wrapper',
+  'styles/woo/ordering';
+
 // stylelint-disable-next-line scss/at-import-no-partial-leading-underscore, scss/at-import-partial-extension-blacklist
 @import '../Components/**/_style.scss';
