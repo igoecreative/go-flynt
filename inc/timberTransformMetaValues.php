@@ -5,11 +5,11 @@
  *
  */
 
-namespace Flynt\TimberMetaTransformValue;
+namespace Flynt\TimberMetaTransformValues;
 
 use Timber\Timber;
 
-add_action('init', function () {
+add_action('init', function (): void {
     $priority = 100;
     add_filter('acf/format_value/type=file', __NAMESPACE__ . '\transformFile', $priority, 3);
     add_filter('acf/format_value/type=image', __NAMESPACE__ . '\transformImage', $priority, 3);
@@ -23,30 +23,23 @@ add_action('init', function () {
  * Check if value should be transformed to Timber/standard PHP objects.
  *
  * @param mixed $value
- * @param array $field
- * @return boolean
  */
-function shouldTransformValue($value, $field)
+function shouldTransformValue($value, array $field): bool
 {
-    if (empty($value) || empty($field)) {
+    if (empty($value) || $field === []) {
         return false;
     }
 
-    if (!isset($field['return_format']) || !in_array($field['return_format'], ['array', 'object'])) {
-        return false;
-    }
-
-    return true;
+    return isset($field['return_format']) && in_array($field['return_format'], ['array', 'object']);
 }
 
 /**
  * Transform ACF file field
  *
- * @param string $value
- * @param int $id
- * @param array $field
+ * @param mixed $value
+ * @param int|string $id
  */
-function transformFile($value, $id, $field)
+function transformFile($value, $id, array $field)
 {
     if (empty($value) || !shouldTransformValue($value, $field)) {
         return $value;
@@ -55,7 +48,13 @@ function transformFile($value, $id, $field)
     return Timber::get_attachment($value);
 }
 
-function transformImage($value, $id, $field)
+/**
+ * Transform ACF image field
+ *
+ * @param mixed $value
+ * @param int|string $id
+ */
+function transformImage($value, $id, array $field)
 {
     if (empty($value) || !shouldTransformValue($value, $field)) {
         return $value;
@@ -67,11 +66,10 @@ function transformImage($value, $id, $field)
 /**
  * Transform ACF gallery field
  *
- * @param array $value
- * @param int $id
- * @param array $field
+ * @param mixed $value
+ * @param int|string $id
  */
-function transformGallery($value, $id, $field)
+function transformGallery($value, $id, array $field)
 {
     if (empty($value) || !shouldTransformValue($value, $field)) {
         return $value;
@@ -85,17 +83,12 @@ function transformGallery($value, $id, $field)
 /**
  * Transform ACF post object field
  *
- * @param string $value
- * @param int $id
- * @param array $field
+ * @param mixed $value
+ * @param int|string $id
  */
-function transformPostObject($value, $id, $field)
+function transformPostObject($value, $id, array $field)
 {
     if (empty($value) || !shouldTransformValue($value, $field)) {
-        return $value;
-    }
-
-    if (!shouldTransformValue($value, $field)) {
         return $value;
     }
 
@@ -109,11 +102,10 @@ function transformPostObject($value, $id, $field)
 /**
  * Transform ACF relationship field
  *
- * @param string $value
- * @param int $id
- * @param array $field
+ * @param mixed $value
+ * @param int|string $id
  */
-function transformRelationship($value, $id, $field)
+function transformRelationship($value, $id, array $field)
 {
     if (empty($value) || !shouldTransformValue($value, $field)) {
         return $value;
@@ -125,18 +117,18 @@ function transformRelationship($value, $id, $field)
 /**
  * Transform ACF taxonomy field
  *
- * @param string $value
- * @param int $id
- * @param array $field
+ * @param mixed $value
+ * @param int|string $id
  */
-function transformTaxonomy($value, $id, $field)
+function transformTaxonomy($value, $id, array $field)
 {
     if (empty($value) || !shouldTransformValue($value, $field)) {
         return $value;
     }
 
     if ($field['field_type'] === 'select' || $field['field_type'] === 'radio') {
-        return Timber::get_term((int) $value);
+        $termId = isset($value->term_id) ? $value->term_id : $value;
+        return Timber::get_term((int) $termId);
     }
 
     return Timber::get_terms((array) $value);

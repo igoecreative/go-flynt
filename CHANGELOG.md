@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.1](https://github.com/flyntwp/flynt/compare/v2.1.0...v2.1.1) (2024-05-10)
+
+### Bug Fixes
+
+* **ListSearchResults:** use new variable name ([#548](https://github.com/flyntwp/flynt/issues/548)) ([8e0dd41](https://github.com/flyntwp/flynt/commit/8e0dd41980dac49ace29f619ec145ea1d94c1c9a))
+* **theContentFix.php:** exclude acf related post types ([39e117f](https://github.com/flyntwp/flynt/commit/39e117fba742a2fc9363e4a5d6bf740f96e83f7e))
+
+## [2.1.0](https://github.com/flyntwp/flynt/compare/v2.0.1...v2.1.0) (2024-03-01)
+
+* Updated Swiper to Version 11.
+* Updated Vite to Version 5.
+* Added entity encoding to TinyMCE configuration.
+* Updated Image behavior to prevent division by zero errors.
+* Added fetchpriority to logo images.
+* Updated external avatar images sideload handling.
+* Replaced TimberLoader with TimberMetaTransformValues.
+* Improved accessibility by adding aria-label values.
+* Improved code readability and maintainability.
+* Added return types and type hints for better code clarity.
+* Updated dependencies and followed consistent formatting.
+
 ## [2.0.1](https://github.com/flyntwp/flynt/compare/v2.0.0...v2.0.1) (2023-09-27)
 
 ### Features
