@@ -33,8 +33,3 @@ registerIconLibrary('my-icons', {
   resolver: name => `/wp-content/themes/theme/assets/icons/${name}.svg`,
   mutator: svg => svg.setAttribute('fill', 'currentColor')
 });
-
-window.customElements.define(
-  'flynt-component',
-  FlyntComponent
-)
