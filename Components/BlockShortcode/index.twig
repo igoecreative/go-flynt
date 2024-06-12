@@ -1,0 +1,12 @@
+<flynt-component
+  name="BlockContactForm"
+  class="componentSpacing"
+  id="{{ options.id }}"
+  {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}
+>
+    <div class="container">
+      <div class="content" data-align="{{ options.align }}" data-text-align="{{ options.textAlign }}">
+        {{ function('do_shortcode', shortcode) }}
+      </div>
+    </div>
+</flynt-component>
