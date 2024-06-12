@@ -14,7 +14,7 @@ if (!defined('WP_ENV')) {
 }
 
 $dotenv = Dotenv::createImmutable(__DIR__);
-$dotenv->load();
+$dotenv->safeLoad();
 
 // Check if the required plugins are installed and activated.
 // If they aren't, this function redirects the template rendering to use
