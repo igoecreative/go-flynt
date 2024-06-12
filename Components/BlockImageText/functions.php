@@ -56,7 +56,16 @@ function getACFLayout(): array
                 'type' => 'group',
                 'layout' => 'row',
                 'sub_fields' => [
-                    FieldVariables\getTheme()
+                    FieldVariables\getTheme(),
+                    [
+                        'label' => __('Align Elements', 'flynt'),
+                        'name' => 'alignElements',
+                        'type' => 'button_group',
+                        'choices' => [
+                            'top' => sprintf('<i class=\'dashicons dashicons-align-full-width\' title=\'%1$s\'></i>', __('Elements top', 'flynt')),
+                            'center' => sprintf('<i class=\'dashicons dashicons-align-center\' title=\'%1$s\'></i>', __('Elements center', 'flynt'))
+                        ]
+                    ],
                 ]
             ]
         ]

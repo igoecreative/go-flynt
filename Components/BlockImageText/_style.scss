@@ -1,7 +1,6 @@
 flynt-component[name='BlockImageText'] {
   @media (min-width: $breakpoint-tablet-horizontal) {
     .container {
-      align-items: center;
       display: flex;
       gap: var(--column-gap);
       justify-content: space-around;
@@ -17,6 +16,14 @@ flynt-component[name='BlockImageText'] {
 
       &[data-image-position='right'] {
         flex-direction: row-reverse;
+      }
+
+      &[data-elements-align='top'] {
+        align-items: start;
+      }
+
+      &[data-elements-align='center'] {
+        align-items: center;
       }
     }
   }
