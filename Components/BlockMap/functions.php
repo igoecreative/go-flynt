@@ -18,6 +18,11 @@ add_filter('Flynt/addComponentData?name=BlockMap', function ($data) {
 
 function getACFLayout()
 {
+    // Disables the element if no API key is set
+    if ($_ENV['VITE_MAPS_API_KEY'] == false) {
+        return array();
+    }
+
     return [
         'name' => 'blockMap',
         'label' => __('Block: Map', 'flynt'),
