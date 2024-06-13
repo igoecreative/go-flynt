@@ -15,6 +15,10 @@
 * [Composer](https://getcomposer.org/download/) >= 2.4
 * [Advanced Custom Fields Pro](https://www.advancedcustomfields.com/pro/) >= 6.0
 
+## Suggested Plugins
+* [No Nonesense Plugin](https://nononsensewp.com/) >= 3.3.2.1
+* [Contact Form 7](https://contactform7.com/) >= 5.9.5
+
 ## Install
 
 1. Clone this repo to `<your-project>/wp-content/themes`.
