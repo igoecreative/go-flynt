@@ -8,6 +8,8 @@ use Flynt\Utils\TimberDynamicResize;
 add_action('acf/init', function (): void {
     global $timberDynamicResize;
     $timberDynamicResize = new TimberDynamicResize();
+    // Don't know if this is the best place for this but it works.
+    acf_update_setting('show_admin', false);
 });
 
 Options::addGlobal('TimberDynamicResize', [
