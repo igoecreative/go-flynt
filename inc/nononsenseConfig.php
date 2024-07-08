@@ -7,7 +7,7 @@
 namespace Flynt\NononesenseConfig;
 
 // Removes Settings
-add_filter('r34nono_define_settings_array', function($settings) {
+add_filter('r34nono_define_settings_array', function ($settings) {
     $hide_toggle = $_ENV['HIDE_CRITICAL_SETTINGS'];
 
     // Flynt Already removes Emojis
@@ -27,10 +27,11 @@ add_filter('r34nono_define_settings_array', function($settings) {
         $settings = hideR34Settings($settings);
     }
 
-	return $settings;
+    return $settings;
 });
 
-function hideR34Settings($settings) {
+function hideR34Settings($settings)
+{
     $settings['r34nono_admin_bar_logout_link']['show_in_admin'] = false;
     $settings['r34nono_hide_admin_bar_for_logged_in_non_editors']['show_in_admin'] = false;
     $settings['r34nono_disable_site_search']['show_in_admin'] = false;
@@ -50,6 +51,5 @@ function hideR34Settings($settings) {
     $settings['r34nono_remove_posts_from_admin']['show_in_admin'] = false;
     $settings['r34nono_xmlrpc_disabled']['show_in_admin'] = false;
 
-	return $settings;
-};
-
+    return $settings;
+}

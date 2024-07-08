@@ -5,11 +5,10 @@ namespace Flynt\Components\Socials;
 use Flynt\Utils\Options;
 
 add_action('init', function () {
-
 });
 
 add_filter('Flynt/addComponentData?name=Socials', function ($data) {
-  return $data;
+    return $data;
 });
 
 Options::addGlobal('Socials', [
