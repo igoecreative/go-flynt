@@ -1,18 +1,23 @@
 /* globals acf jQuery */
 
 (function ($) {
-    const select2init = function () {
-        acf.addAction('select2_init', function ($select, args, settings, field) {
-            const $fieldEl = field.$el
+  if (typeof acf === 'undefined') {
+    return
+  }
 
-            if ($fieldEl.data('name') === 'reusableComponent') {
-                $select.on('change', { $fieldEl }, function () {
-                    const postId = $(this).val()
-                    const postTitle = $(this).find('option:selected').text()
-                    const $postLink = $fieldEl.find('.reusable-postLink')
-                    const oldPostId = $postLink.attr('data-postId')
-                    const $hiddenEl = $fieldEl.find('[hidden]')
-                    const href = $postLink.attr('href')
+  const select2init = function () {
+    acf.addAction('select2_init', function ($select, args, settings, field) {
+      const $fieldEl = field.$el
+      const fieldName = $fieldEl ? $fieldEl.data('name') || '' : ''
+
+      if (fieldName === 'reusableComponent') {
+        $select.on('change', { $fieldEl }, function () {
+          const postId = $(this).val()
+          const postTitle = $(this).find('option:selected').text()
+          const $postLink = $fieldEl.find('.reusable-postLink')
+          const oldPostId = $postLink.attr('data-postId')
+          const $hiddenEl = $fieldEl.find('[hidden]')
+          const href = $postLink.attr('href')
 
                     $hiddenEl.removeAttr('hidden')
                     $postLink.text(postTitle)
@@ -23,7 +28,5 @@
         })
     }
 
-    if (typeof acf !== 'undefined') {
-        select2init()
-    }
+  select2init()
 })(jQuery)
