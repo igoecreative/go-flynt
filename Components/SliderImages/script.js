@@ -7,30 +7,31 @@ import 'swiper/css/a11y'
 import 'swiper/css/navigation'
 
 export default function (el) {
-  const refs = buildRefs(el)
-  const data = getJSON(el)
+    const refs = buildRefs(el)
+    const data = getJSON(el)
 
-  const swiper = initSlider(refs, data)
+    const swiper = initSlider(refs, data)
 
-  return () => swiper.destroy()
+    return () => swiper.destroy()
 }
 
-function initSlider (refs, data) {
-  const { options } = data
-  const config = {
-    modules: [Autoplay, A11y, Navigation],
-    a11y: options.a11y,
-    roundLengths: true,
-    navigation: {
-      nextEl: refs.next,
-      prevEl: refs.prev
+function initSlider(refs, data)
+{
+    const { options } = data
+    const config = {
+        modules: [Autoplay, A11y, Navigation],
+        a11y: options.a11y,
+        roundLengths: true,
+        navigation: {
+            nextEl: refs.next,
+            prevEl: refs.prev
+        }
     }
-  }
-  if (options.autoplay && options.autoplaySpeed) {
-    config.autoplay = {
-      delay: options.autoplaySpeed
+    if (options.autoplay && options.autoplaySpeed) {
+        config.autoplay = {
+            delay: options.autoplaySpeed
+        }
     }
-  }
 
-  return new Swiper(refs.slider, config)
+    return new Swiper(refs.slider, config)
 }
